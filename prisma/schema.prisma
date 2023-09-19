@@ -16,7 +16,6 @@ model Wallets {
   bgumTransfer Int    @default(0)
   bgumBurn     Int    @default(0)
   sol          Int    @default(0)
-  tokens       Json
   tensorIX     Int    @default(0)
   meIX         Int    @default(0)
   sharkyIX     Int    @default(0)
