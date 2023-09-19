@@ -12,14 +12,14 @@ datasource db {
 
 model Wallets {
   wallet       String @id
-  bgumMint     Int
-  bgumTransfer Int
-  bgumBurn     Int
-  sol          Int
+  bgumMint     Int    @default(0)
+  bgumTransfer Int    @default(0)
+  bgumBurn     Int    @default(0)
+  sol          Int    @default(0)
   tokens       Json
-  tensorIX     Int
-  meIX         Int
-  sharkyIX     Int
-  foxyIX       Int
-  cmMints      Int
+  tensorIX     Int    @default(0)
+  meIX         Int    @default(0)
+  sharkyIX     Int    @default(0)
+  foxyIX       Int    @default(0)
+  cmMints      Int    @default(0)
 }
