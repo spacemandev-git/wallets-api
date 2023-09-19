@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "license": "MIT",
   "dependencies": {
+    "@prisma/client": "5.3.1",
     "@types/node": "^20.6.2",
     "hono": "^3.6.3",
     "node-fetch": "^3.3.2",

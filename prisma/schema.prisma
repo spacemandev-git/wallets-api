@@ -9,3 +9,17 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Wallets {
+  wallet       String @id
+  bgumMint     Int
+  bgumTransfer Int
+  bgumBurn     Int
+  sol          Int
+  tokens       Json
+  tensorIX     Int
+  meIX         Int
+  sharkyIX     Int
+  foxyIX       Int
+  cmMints      Int
+}
