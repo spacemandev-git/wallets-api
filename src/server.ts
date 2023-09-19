@@ -8,8 +8,14 @@ const app = new Hono();
 
 app.get("/", (c) => c.text("Hono!"));
 app.get("/wallets", async (c) => {
-  const wallets = await prisma.wallets.findMany({});
-  return c.json(wallets);
+  try {
+    const wallets = await prisma.wallets.findMany({});
+    return c.json(wallets);
+  } catch (e: any) {
+    console.error(e);
+    return c.json({ error: e.message || e });
+  }
 });
 
+console.log("Hono is running!");
 export default app;
