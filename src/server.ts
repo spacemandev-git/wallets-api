@@ -3,19 +3,26 @@ dotenv.config();
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-import { Hono } from "hono";
-const app = new Hono();
+import express from "express";
+import cors from "cors";
+import http from "http";
 
-app.get("/", (c) => c.text("Hono!"));
-app.get("/wallets", async (c) => {
-  try {
-    const wallets = await prisma.wallets.findMany({});
-    return c.json(wallets);
-  } catch (e: any) {
-    console.error(e);
-    return c.json({ error: e.message || e });
-  }
+const server = express();
+server.use(cors());
+server.use(express.json());
+
+const httpServer = http.createServer(server);
+httpServer.listen(process.env.PORT, () => {
+  console.log(`HTTP Server running on port ${process.env.PORT}`);
 });
 
-console.log("Hono is running!");
-export default app;
+server.get("/", (req, res) => res.json({ success: "Express" }));
+server.get("/wallets", async (req, res) => {
+  try {
+    const wallets = await prisma.wallets.findMany({});
+    return res.json(wallets);
+  } catch (e: any) {
+    console.error(e);
+    return res.json({ error: e.message || e });
+  }
+});
